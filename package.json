@@ -1,0 +1,31 @@
+{
+  "scripts": {
+    "develop": "npm run unbundle && nws -d src",
+    "unbundle": "jspm unbundle && npm run clean",
+    "bundle": "jspm bundle lib/main --inject",
+    "clean": "rimraf src/build.js src/build.js.map config.js",
+    "postinstall": "touch src/config.js && jspm install"
+  },
+  "devDependencies": {
+    "jspm": "^0.14.0",
+    "nws": "^0.6.1",
+    "rimraf": "^2.3.2",
+    "touch": "https://github.com/shovon/node-touch/tarball/v0.1.0"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "src",
+      "lib": "src/lib",
+      "packages": "src/jspm_packages"
+    },
+    "dependencies": {
+      "css": "github:systemjs/plugin-css@^0.1.7",
+      "fetch": "github:github/fetch@^0.7.0",
+      "jsx": "github:floatdrop/plugin-jsx@^1.1.0",
+      "less": "github:aaike/jspm-less-plugin@^0.0.5",
+      "react": "npm:react@^0.13.0",
+      "react-router": "npm:react-router@^0.13.2",
+      "wolfy87-eventemitter": "npm:wolfy87-eventemitter@^4.2.11"
+    }
+  }
+}
