@@ -1,13 +1,29 @@
 import 'fetch';
 
-import EventEmitter from 'wolfy87-eventemitter';
+import events from 'events';
+import assign from 'object-assign';
+import AppDispatcher from '../dispatcher/AppDispatcher';
+import ImagesConstant from '../constants/ImagesConstants';
+import imgur from '../helpers/imgur';
 
-class ImagesStore extends EventEmitter {
-  fetch() {
-    
+let ImagesStore = assign({}, events.EventEmitter.prototype, {
+
+  fetch: function () {
+  },
+
+  getState: function () {
+    return {
+      isReady: false
+    }
   }
-}
 
-let imagesStore = new ImagesStore();
+});
 
-export default imagesStore
+AppDispatcher.register(function (action) {
+  switch (action.actionType) {
+  case ImagesConstants.IMAGE_CREATE:
+
+  }
+});
+
+export default ImagesStore;

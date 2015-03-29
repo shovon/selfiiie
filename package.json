@@ -20,12 +20,14 @@
     },
     "dependencies": {
       "css": "github:systemjs/plugin-css@^0.1.7",
+      "events": "github:jspm/nodelibs-events@^0.1.0",
       "fetch": "github:github/fetch@^0.7.0",
+      "flux": "npm:flux@^2.0.1",
+      "font-awesome": "npm:font-awesome@^4.3.0",
       "jsx": "github:floatdrop/plugin-jsx@^1.1.0",
-      "less": "github:aaike/jspm-less-plugin@^0.0.5",
+      "object-assign": "npm:object-assign@^2.0.0",
       "react": "npm:react@^0.13.0",
-      "react-router": "npm:react-router@^0.13.2",
-      "wolfy87-eventemitter": "npm:wolfy87-eventemitter@^4.2.11"
+      "react-router": "npm:react-router@^0.13.2"
     }
   }
 }

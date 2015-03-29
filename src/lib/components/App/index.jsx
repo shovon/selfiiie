@@ -1,4 +1,4 @@
-import './styles.less!';
+import './styles.css!';
 
 import React from 'react';
 import Router from 'react-router';
