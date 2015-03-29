@@ -1,17 +1,15 @@
 import SnapButton from '../SnapButton/index.jsx!';
-import ImagesView from '../ImagesView/index.jsx!';
+import Images from '../Images/index.jsx!';
 
 import React from 'react';
 
-let Index = React.createClass({
+export default const Index = React.createClass({
   render: function () {
     return (
       <div className='index'>
-        <ImagesView />
+        <Images />
         <SnapButton onClick={function () { alert('Clicked') }} />
       </div>
     );
   }
 });
-
-export default Index;

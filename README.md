@@ -12,8 +12,13 @@ Create a `settings.js` file in the `src/lib` folder, with the following code, wh
 
 ```
 let settings = {
-  apiKey: '{MongoLab API key here}',
-  databaseName: '{Database name here}'
+  mongolab: {
+    APIKey: '{MongoLab API Key here}',
+    databaseName: '{Database name here}'
+  },
+  imgur: {
+    clientId: '{imgur client id here}'
+  }
 };
 
 export default settings;
