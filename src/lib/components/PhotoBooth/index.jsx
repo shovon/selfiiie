@@ -78,6 +78,10 @@ const PhotoBooth = React.createClass({
     this._handleUpdate();
   },
 
+  componentWillUnmount: function () {
+    this.state.camera.stop();
+  },
+
   _takePictureClicked: function () {
     var encodedImage = this.state.camera.snapshot();
     this.state.camera.stop();

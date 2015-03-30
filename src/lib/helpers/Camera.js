@@ -88,8 +88,11 @@ export default class Camera {
   }
 
   stop() {
-    this.stream.stop();
-    this.animate = false;
+    if (this.gotCamera) {
+      this.gotCamera = false;
+      this.stream.stop();
+      this.animate = false;
+    }
   }
 
   pause() {
