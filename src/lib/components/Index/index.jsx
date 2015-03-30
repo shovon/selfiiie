@@ -14,6 +14,7 @@ const Index = React.createClass({
     return (
       <div className='index'>
         <Images />
+        <div className='bottom-padding'></div>
         <SnapButton onClick={this._snap} />
       </div>
     );

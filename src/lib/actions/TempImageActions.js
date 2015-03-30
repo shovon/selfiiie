@@ -1,7 +1,7 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import TempImageConstants from '../constants/TempImageConstants';
 
-let TempImageAction = {
+let TempImageActions = {
   storeImage: function (image) {
     AppDispatcher.dispatch({
       actionType: TempImageConstants.STORE_IMAGE,
@@ -10,4 +10,4 @@ let TempImageAction = {
   }
 };
 
-export default TempImageConstants;
+export default TempImageActions;

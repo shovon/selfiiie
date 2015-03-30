@@ -104,7 +104,7 @@ export default class Camera {
   }
 
   snapshot() {
-    this.pause();
+    this.stop();
     return this.canvas.toDataURL();
   }
 

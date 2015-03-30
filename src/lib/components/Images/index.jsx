@@ -36,6 +36,7 @@ const Images = React.createClass({
             <div>{imagesComponents}</div> :
             <div>Loading</div>
         }
+        <div className='bottom-padding'></div>
       </div>
     );
   },

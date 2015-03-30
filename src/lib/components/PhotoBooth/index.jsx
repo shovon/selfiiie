@@ -3,7 +3,8 @@ import './styles.css!';
 import React from 'react';
 import TitleBar from '../TitleBar/index.jsx!';
 import Camera from '../../helpers/Camera';
-import ImagesActions from '../../actions/ImagesActions';
+import TempImageActions from '../../actions/TempImageActions';
+import TempImageStore from '../../stores/TempImageStore';
 
 const PhotoBooth = React.createClass({
   contextTypes: {
@@ -67,7 +68,14 @@ const PhotoBooth = React.createClass({
       resize();
 
       this.state.camera.render(canvas);
+
+      TempImageStore.addStoreListener(this._onImageStore);
     }
+  },
+
+  _onImageStore: function () {
+    console.log('Good');
+    this.context.router.transitionTo('/');
   },
 
   componentDidUpdate: function () {
@@ -80,14 +88,14 @@ const PhotoBooth = React.createClass({
 
   componentWillUnmount: function () {
     this.state.camera.stop();
+    TempImageStore.removeStoreListener(this._onImageStore);
   },
 
   _takePictureClicked: function () {
     var encodedImage = this.state.camera.snapshot();
-    this.state.camera.stop();
     var image = document.createElement('img');
     image.src = encodedImage;
-    ImagesActions.createImage(image);
+    TempImageActions.storeImage(image);
   }
 });
 
