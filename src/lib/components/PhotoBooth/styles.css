@@ -1,0 +1,20 @@
+.photo-booth canvas {
+  display: block;
+}
+
+.photo-booth .take-picture-button {
+  text-align: center;
+  width: 100%;
+  bottom: 10px;
+  position: absolute;
+}
+
+.photo-booth .take-picture-button button {
+  color: white;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  font-size: 1.5em;
+  border-radius: 50px;
+  margin-top: 10px;
+}

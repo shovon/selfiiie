@@ -1,3 +1,5 @@
+import './styles.css!';
+
 import React from 'react';
 import TitleBar from '../TitleBar/index.jsx!';
 import Camera from '../../helpers/Camera';
@@ -17,12 +19,14 @@ const PhotoBooth = React.createClass({
       iconClass: 'fa fa-arrow-left',
     };
     return (
-      <div>
+      <div className='photo-booth'>
         <TitleBar topLeftButton={topLeftButton} titleText="Selfiiie" />
         <canvas ref='canvas' />
-        <button>
-          <i className='fa fa-camera'></i>
-        </button>
+        <div className='take-picture-button'>
+          <button>
+            <i className='fa fa-camera'></i>
+          </button>
+        </div>
       </div>
     );
   },
@@ -35,11 +39,17 @@ const PhotoBooth = React.createClass({
 
       let canvas = React.findDOMNode(this.refs.canvas);
 
-      window.addEventListener
+      window.addEventListener('resize', () => {
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+      });
 
       let width = window.innerWidth;
+      let height = window.innerHeight;
       canvas.width = width;
-      canvas.height = width;
+      canvas.height = height;
       this.state.camera.render(canvas);
     });
   }
