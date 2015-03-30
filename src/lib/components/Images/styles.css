@@ -1,0 +1,12 @@
+.images {
+  margin-bottom: 100px;
+  height: 100vh;
+}
+
+.images img {
+  display: block;
+  float: left;
+  width: 50vw;
+  height: 50vh;
+  object-fit: cover;
+}

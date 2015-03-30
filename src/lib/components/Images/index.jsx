@@ -1,3 +1,5 @@
+import './styles.css!';
+
 import ImagesStore from '../../stores/ImagesStore';
 import React from 'react';
 
@@ -17,12 +19,21 @@ const Images = React.createClass({
     ImagesStore.addChangeListener(this._onChange);
   },
 
+  componentWillUnmount: function () {
+    ImagesStore.removeReadyListener(this._onReady);
+    ImagesStore.removeChangeListener(this._onChange);
+  },
+
   render: function () {
+    var images = this.state.images || [];
+    var imagesComponents = images.map(function (image) {
+      return <img src={image.imgur.data.link} />;
+    });
     return (
-      <div>
+      <div className='images'>
         {
           this.state.isReady ?
-            <div>TODO: Implement this</div> :
+            <div>{imagesComponents}</div> :
             <div>Loading</div>
         }
       </div>
@@ -37,7 +48,7 @@ const Images = React.createClass({
 
   _onChange: function () {
     this.setState({
-      images: ImagesStores.images
+      images: ImagesStore.images
     });
   }
 });

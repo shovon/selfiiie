@@ -2,6 +2,9 @@ const ImagesConstants = {
   get IMAGE_CREATE() { return 'IMAGE_CREATE'; },
   set IMAGE_CREATE(value) { throw new Error('IMAGE_CREATE read only'); },
 
+  get APPEND_IMAGES() { return 'APPEND_IMAGES'; },
+  set APPEND_IMAGES(value) { throw new Error('APPEND_IMAGES read only'); },
+
   get ON_READY() { return 'ON_READY'; },
   set ON_READY(value) { throw new Error('ON_READY read only'); },
 

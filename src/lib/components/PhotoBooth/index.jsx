@@ -3,41 +3,57 @@ import './styles.css!';
 import React from 'react';
 import TitleBar from '../TitleBar/index.jsx!';
 import Camera from '../../helpers/Camera';
+import ImagesActions from '../../actions/ImagesActions';
 
 const PhotoBooth = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.func
+  },
+
   getInitialState: function () {
     return {
-      camera: new Camera(),
-      isSelection: false
+      camera: new Camera()
     }
+  },
+
+  _topLeftButtonClick: function () {
+    this.context.router.transitionTo('/');
   },
 
   render: function () {
     let topLeftButton = {
-      onClick: function () {
-        alert('Good');
-      },
+      onClick: this._topLeftButtonClick,
       iconClass: 'fa fa-arrow-left'
     };
     return (
       <div className='photo-booth'>
         <TitleBar topLeftButton={topLeftButton} titleText="Selfiiie" />
-        <canvas ref='canvas' />
-        <div className='take-picture-button'>
-          <button onClick={this._takePictureClicked}>
-            <i className='fa fa-camera'></i>
-          </button>
-        </div>
+        {
+          this.state.camera.gotCamera ?
+            <div>
+              <canvas ref='canvas' />
+              <div className='take-picture-button'>
+                <button onClick={this._takePictureClicked}>
+                  <i className='fa fa-camera'></i>
+                </button>
+              </div>
+            </div> :
+            <div className='waiting-message'>Still waiting on camera.</div>
+        }
       </div>
     );
   },
 
-  componentDidMount: function () {
-    this.state.camera.requestCamera((err) => {
-      if (err) {
-        throw err;
-      }
+  _handleUpdate: function () {
+    if (!this.state.camera.gotCamera) {
+      this.state.camera.requestCamera((err) => {
+        if (err) {
+          throw err;
+        }
 
+        this.forceUpdate();
+      });
+    } else {
       let canvas = React.findDOMNode(this.refs.canvas);
 
       let resize = () => {
@@ -51,14 +67,23 @@ const PhotoBooth = React.createClass({
       resize();
 
       this.state.camera.render(canvas);
-    });
+    }
+  },
+
+  componentDidUpdate: function () {
+    this._handleUpdate();
+  },
+
+  componentDidMount: function () {
+    this._handleUpdate();
   },
 
   _takePictureClicked: function () {
-    this.state.camera.pause();
-    this.setState({
-      isSelection: true
-    });
+    var encodedImage = this.state.camera.snapshot();
+    this.state.camera.stop();
+    var image = document.createElement('img');
+    image.src = encodedImage;
+    ImagesActions.createImage(image);
   }
 });
 

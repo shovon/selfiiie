@@ -5,8 +5,14 @@ let ImagesActions = {
   createImage: function (image) {
     AppDispatcher.dispatch({
       actionType: ImagesConstants.IMAGE_CREATE,
-      image: images
+      image: image
     });
+  },
+  append: function (metadata) {
+    AppDispatcher.dispatch({
+      actionType: ImagesConstants.APPEND_IMAGES,
+      images: metadata
+    })
   }
 };
 

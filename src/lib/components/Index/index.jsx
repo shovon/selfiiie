@@ -1,6 +1,9 @@
+import './styles.css!';
+
 import SnapButton from '../SnapButton/index.jsx!';
 import Images from '../Images/index.jsx!';
 import React from 'react';
+import ImagesStore from '../../stores/ImagesStore';
 
 const Index = React.createClass({
   contextTypes: {
