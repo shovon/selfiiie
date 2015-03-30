@@ -7,7 +7,8 @@ import Camera from '../../helpers/Camera';
 const PhotoBooth = React.createClass({
   getInitialState: function () {
     return {
-      camera: new Camera()
+      camera: new Camera(),
+      isSelection: false
     }
   },
 
@@ -16,14 +17,14 @@ const PhotoBooth = React.createClass({
       onClick: function () {
         alert('Good');
       },
-      iconClass: 'fa fa-arrow-left',
+      iconClass: 'fa fa-arrow-left'
     };
     return (
       <div className='photo-booth'>
         <TitleBar topLeftButton={topLeftButton} titleText="Selfiiie" />
         <canvas ref='canvas' />
         <div className='take-picture-button'>
-          <button>
+          <button onClick={this._takePictureClicked}>
             <i className='fa fa-camera'></i>
           </button>
         </div>
@@ -39,18 +40,24 @@ const PhotoBooth = React.createClass({
 
       let canvas = React.findDOMNode(this.refs.canvas);
 
-      window.addEventListener('resize', () => {
+      let resize = () => {
         let width = window.innerWidth;
         let height = window.innerHeight;
         canvas.width = width;
-        canvas.height = height;
-      });
+        canvas.height = height; 
+      };
 
-      let width = window.innerWidth;
-      let height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
+      window.addEventListener('resize', resize);
+      resize();
+
       this.state.camera.render(canvas);
+    });
+  },
+
+  _takePictureClicked: function () {
+    this.state.camera.pause();
+    this.setState({
+      isSelection: true
     });
   }
 });
