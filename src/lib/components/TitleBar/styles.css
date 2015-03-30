@@ -1,0 +1,21 @@
+.title-bar {
+  background-color: #8BC34A;
+  min-height: 60px;
+  color: white;
+}
+
+.title-bar button {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 20px;
+}
+
+.title-bar h2 {
+  display: inline-block;
+  top: 19px;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  font-weight: 300;
+}

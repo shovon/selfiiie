@@ -4,13 +4,14 @@ import React from 'react';
 import Router from 'react-router';
 import App from './components/App/index.jsx!';
 import Index from './components/Index/index.jsx!';
-
+import PhotoBooth from './components/PhotoBooth/index.jsx!';
 
 let { Route, DefaultRoute } = Router;
 
 let routes = (
   <Route handler={App}>
     <DefaultRoute handler={Index} />
+    <Route name='photo-booth' handler={PhotoBooth} />
   </Route>
 );
 

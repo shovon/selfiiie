@@ -4,7 +4,7 @@ import React from 'react';
 const EMPTY_MESSAGE =
   'Looks like you\u2019re the first one here! Take a selfie!';
 
-export default const Images = React.createClass({
+const Images = React.createClass({
   getInitialState: function () {
     return {
       isReady: ImagesStore.isReady,
@@ -41,3 +41,5 @@ export default const Images = React.createClass({
     });
   }
 });
+
+export default Images;

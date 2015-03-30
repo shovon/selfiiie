@@ -1,8 +1,8 @@
-import './styles.less';
+import './styles.css!';
 
 import React from 'react';
 
-export default const TitleBar = React.createClass({
+const TitleBar = React.createClass({
   render: function () {
     let components = [];
     if (this.props.topLeftButton) {
@@ -12,7 +12,7 @@ export default const TitleBar = React.createClass({
         </button>
       );
     }
-    if (this.titleText) {
+    if (this.props.titleText) {
       components.push(
         <h2>{this.props.titleText}</h2>
       );
@@ -22,3 +22,5 @@ export default const TitleBar = React.createClass({
     );
   }
 });
+
+export default TitleBar;
