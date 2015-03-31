@@ -9139,7 +9139,7 @@ System.register("lib/components/Editor/index.jsx!github:floatdrop/plugin-jsx@1.1
           };
           return (React.createElement("div", {className: "editor"}, React.createElement(TitleBar, {
             topLeftButton: topLeftButton,
-            titleText: "Selfiii",
+            titleText: "Selfiiie",
             topRightButton: topRightButton
           }), React.createElement("canvas", {ref: "canvas"}), React.createElement("ul", null, effects.map((function(effect, i) {
             return React.createElement("li", {
@@ -11357,7 +11357,7 @@ System.register("lib/components/PhotoBooth/index.jsx!github:floatdrop/plugin-jsx
           return (React.createElement("div", {className: "photo-booth"}, React.createElement(TitleBar, {
             topLeftButton: topLeftButton,
             titleText: "Selfiiie"
-          }), this.state.camera.gotCamera ? React.createElement("div", null, React.createElement("canvas", {ref: "canvas"}), React.createElement("div", {className: "take-picture-button"}, React.createElement("button", {onClick: this._takePictureClicked}, React.createElement("i", {className: "fa fa-camera"})))) : React.createElement("div", {className: "waiting-message"}, React.createElement("i", {className: "fa fa-camera"}), React.createElement("br", null), "Waitin on camera")));
+          }), this.state.camera.gotCamera ? React.createElement("div", null, React.createElement("canvas", {ref: "canvas"}), React.createElement("div", {className: "take-picture-button"}, React.createElement("button", {onClick: this._takePictureClicked}, React.createElement("i", {className: "fa fa-camera"})))) : React.createElement("div", {className: "waiting-message"}, React.createElement("i", {className: "fa fa-camera"}), React.createElement("br", null), "Waiting on camera")));
         },
         _handleUpdate: function() {
           var $__0 = this;
