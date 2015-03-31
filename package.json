@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "develop": "npm run unbundle && nws -d src",
+    "develop": "npm run unbundle && nws -p 3031 -d src",
     "unbundle": "jspm unbundle && npm run clean",
     "bundle": "jspm bundle lib/main --inject",
     "clean": "rimraf src/build.js src/build.js.map config.js",

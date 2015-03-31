@@ -1,0 +1,47 @@
+.editor canvas {
+  width: 100%;
+  display: block;
+}
+
+.editor ul {
+  padding: 10px 0;
+  list-style: none;
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  width: 100%;
+  margin: 0;
+}
+
+.editor ul li {
+  text-align: center;
+  display: block;
+  width: 96px;
+  float: left;
+  clear: right;
+  margin: 0 10px;
+}
+
+.editor ul li div {
+  background-image: url('./Lenna.png');
+  width: 96px;
+  height: 96px;
+  background-color: black;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.editor ul li div.black-and-white {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.editor ul li div.sepia-tone {
+  -webkit-filter: sepia(100%);
+  filter: sepia(100%);
+}

@@ -17,6 +17,15 @@ const TitleBar = React.createClass({
         <h2>{this.props.titleText}</h2>
       );
     }
+    if (this.props.topRightButton) {
+      components.push(
+        <button
+          className='top-right'
+          onClick={this.props.topRightButton.onClick}>
+          <i className={this.props.topRightButton.iconClass}></i>
+        </button>
+      );
+    }
     return (
       <div className='title-bar'>{components}</div>
     );

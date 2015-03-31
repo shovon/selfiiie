@@ -22,20 +22,10 @@ let ImagesStore = assign({
 
   _images: [],
 
+  // Change
+
   emitChange: function () {
     this.emit(ImagesConstants.ON_CHANGE);
-  },
-
-  emitReady: function () {
-    this.emit(ImagesConstants.ON_READY);
-  },
-
-  addReadyListener: function (listener) {
-    this.once(ImagesConstants.ON_READY, listener);
-  },
-
-  removeReadyListener: function (listener) {
-    this.removeListener(ImagesConstants.ON_READY, listener);
   },
 
   addChangeListener: function (listener) {
@@ -44,6 +34,35 @@ let ImagesStore = assign({
 
   removeChangeListener: function (listener) {
     this.removeListener(ImagesConstants.ON_CHANGE, listener);
+  },
+
+  // Sent
+
+  emitSent: function () {
+    this.emit(ImagesConstants.ON_EMIT);
+  },
+
+  addSentListener: function (listener) {
+    this.on(ImagesConstants.ON_CHANGE, listener);
+  },
+
+  removeSentListener: function (listener) {
+    this.removeListener(ImagesConstants.ON_CHANGE, listener);
+  },
+
+  // Ready
+
+  emitReady: function () {
+    this.emit(ImagesConstants.ON_READY);
+  },
+
+  addReadyListener: function (listener) {
+    // TODO: avoid using once.
+    this.once(ImagesConstants.ON_READY, listener);
+  },
+
+  removeReadyListener: function (listener) {
+    this.removeListener(ImagesConstants.ON_READY, listener);
   }
 
 });
@@ -74,11 +93,24 @@ AppDispatcher.register(function (action) {
         );
       })
       .then(function (data) {
+        ImagesStore.emitSent();
         ImagesActions.append([data]);
       });
     break;
   case ImagesConstants.APPEND_IMAGES:
-    ImagesStore._images = action.images;
+    // Dictionaries are perfect for implementing set unions.
+    let newImagesHash = {}
+    let eachCallback = (val) => {
+      newImagesHash[val._id.$oid] || (newImagesHash[val._id.$oid] = val);
+    }
+
+    ImagesStore._images.forEach(eachCallback);
+    action.images.forEach(eachCallback);
+
+    let newImages = Object.keys(newImagesHash).map((key) => newImagesHash[key]);
+
+    ImagesStore._images = newImages;
+
     ImagesStore.emitChange();
     if (!isReady) {
       isReady = true;

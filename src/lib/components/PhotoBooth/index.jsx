@@ -39,7 +39,10 @@ const PhotoBooth = React.createClass({
                 </button>
               </div>
             </div> :
-            <div className='waiting-message'>Still waiting on camera.</div>
+            <div className='waiting-message'>
+              <i className='fa fa-camera'></i><br />
+              Waitin on camera
+            </div>
         }
       </div>
     );
@@ -74,8 +77,7 @@ const PhotoBooth = React.createClass({
   },
 
   _onImageStore: function () {
-    console.log('Good');
-    this.context.router.transitionTo('/');
+    this.context.router.transitionTo('/editor');
   },
 
   componentDidUpdate: function () {
