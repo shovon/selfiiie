@@ -51,7 +51,7 @@ const Editor = React.createClass({
       <div className='editor'>
         <TitleBar
           topLeftButton={topLeftButton}
-          titleText="Selfiii"
+          titleText="Selfiiie"
           topRightButton={topRightButton} />
         <canvas ref='canvas' />
         <ul>
