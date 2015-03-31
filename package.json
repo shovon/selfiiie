@@ -1,12 +1,14 @@
 {
   "scripts": {
     "develop": "npm run unbundle && nws -p 3033 -d src",
-    "unbundle": "jspm unbundle && npm run clean",
+    "unbundle": "jspm unbundle && npm run clean:bundle",
     "bundle": "jspm bundle lib/main --inject",
     "dist": "rimraf build && npm run bundle && mkdir -p build/jspm_packages/npm && npm run dist:copy",
     "dist:copy": "cp src/build.js.map src/build.js src/index.html src/config.js build && cp src/jspm_packages/{*.js,*.map} build/jspm_packages && mkdir -p build/lib/components/Editor && cp src/lib/components/Editor/Lenna.png build/lib/components/Editor/Lenna.png && cp -r src/jspm_packages/npm/font-awesome@4.3.0 build/jspm_packages/npm",
+    "jspm_install": "npm run postinstall",
     "preview": "npm run dist && nws -p 3032 -d build",
-    "clean": "rimraf src/build.js src/build.js.map src/config.js build",
+    "clean": "npm run clean:bundle && rimraf src/config.js build src/jspm_packages",
+    "clean:bundle": "rimraf src/build.js src/build.js.map",
     "postinstall": "touch src/config.js && jspm install"
   },
   "devDependencies": {

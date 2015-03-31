@@ -3,9 +3,6 @@ import './styles.css!';
 import ImagesStore from '../../stores/ImagesStore';
 import React from 'react';
 
-const EMPTY_MESSAGE =
-  'Looks like you\u2019re the first one here! Take a selfie!';
-
 const Images = React.createClass({
   getInitialState: function () {
     return {
@@ -25,9 +22,10 @@ const Images = React.createClass({
   },
 
   render: function () {
-    var images = this.state.images || [];
-    var imagesComponents = images.map(function (image) {
-      return <img src={image.imgur.data.link} />;
+    let images = this.state.images || [];
+    let imagesComponents = images.map(function (image) {
+      let link = image.imgur.data.link;
+      return <img src={link.slice(5, link.length)} />;
     });
     return (
       <div className='images'>
