@@ -3,3 +3,4 @@ src/jspm_packages
 src/config.js
 src/build.js*
 src/lib/settings.js
+build
