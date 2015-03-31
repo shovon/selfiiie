@@ -41,7 +41,7 @@ const PhotoBooth = React.createClass({
             </div> :
             <div className='waiting-message'>
               <i className='fa fa-camera'></i><br />
-              Waitin on camera
+              Waiting on camera
             </div>
         }
       </div>
