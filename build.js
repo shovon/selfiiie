@@ -14154,7 +14154,6 @@ System.register("lib/components/Images/index.jsx!github:floatdrop/plugin-jsx@1.1
   var __moduleName = "lib/components/Images/index.jsx!github:floatdrop/plugin-jsx@1.1.0";
   var ImagesStore,
       React,
-      EMPTY_MESSAGE,
       Images;
   return {
     setters: [function($__m) {}, function($__m) {
@@ -14163,7 +14162,6 @@ System.register("lib/components/Images/index.jsx!github:floatdrop/plugin-jsx@1.1
       React = $__m.default;
     }],
     execute: function() {
-      EMPTY_MESSAGE = 'Looks like you\u2019re the first one here! Take a selfie!';
       Images = React.createClass({
         displayName: "Images",
         getInitialState: function() {
@@ -14185,7 +14183,8 @@ System.register("lib/components/Images/index.jsx!github:floatdrop/plugin-jsx@1.1
         render: function() {
           var images = this.state.images || [];
           var imagesComponents = images.map(function(image) {
-            return React.createElement("img", {src: image.imgur.data.link});
+            var link = image.imgur.data.link;
+            return React.createElement("img", {src: link.slice(5, link.length)});
           });
           return (React.createElement("div", {className: "images"}, this.state.isReady ? React.createElement("div", null, imagesComponents) : React.createElement("div", null, "Loading"), React.createElement("div", {className: "bottom-padding"})));
         },
